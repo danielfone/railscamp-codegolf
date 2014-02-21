@@ -7,6 +7,7 @@ REPOPATH=`pwd`
 TMPDIR=`mktemp -d`
 cd $TMPDIR
 git clone $REPOPATH $TMPDIR
+cp -r /vagrant/master_repo/test $TMPDIR
 cd $TMPDIR
 test/score
 echo
