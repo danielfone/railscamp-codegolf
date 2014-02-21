@@ -4,17 +4,19 @@ set -o nounset
 set -o errexit
 
 if [[ $# -lt 1 ]]; then
-  echo "USAGE: $0 REPONAME"
+  echo "USAGE: $0 TEAMNAME"
   exit -1
 fi
 
-REPONAME=$1
-REPODIR=/chchruby
-REPO_PATH=$REPODIR/$REPONAME.git
+TEAMNAME=$1
+REPODIR=/chchruby/$TEAMNAME
+REPO_PATH=$REPODIR/codegolf.git
 
 mkdir -p $REPODIR
 git clone --bare master_repo $REPO_PATH
+cp git_hooks/* $REPO_PATH/hooks
 chmod g+w -R $REPO_PATH
+chmod +x -R $REPO_PATH/hooks/*
 chown git:git -R $REPO_PATH
 cd master_repo
-git remote add $REPONAME $REPO_PATH
+git remote add $TEAMNAME $REPO_PATH

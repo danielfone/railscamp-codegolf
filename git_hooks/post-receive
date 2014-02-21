@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+REPOPATH=`pwd`
+TMPDIR=`mktemp -d`
+cd $TMPDIR
+git clone $REPOPATH $TMPDIR
+cd $TMPDIR
+test/score
+echo
+cd ..
+rm -fr $TMPDIR

@@ -5,4 +5,4 @@ read -p "Clean build code [y/N]? " choice
 [[ $choice == 'y' ]] || exit -1
 
 rm -vfr master_repo
-rm -vfr repos
+rm -vfr /chchruby
