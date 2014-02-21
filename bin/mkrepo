@@ -9,7 +9,12 @@ if [[ $# -lt 1 ]]; then
 fi
 
 REPONAME=$1
-mkdir -p repos
-git clone --bare master_repo "repos/$REPONAME.git"
+REPODIR=/chchruby
+REPO_PATH=$REPODIR/$REPONAME.git
+
+mkdir -p $REPODIR
+git clone --bare master_repo $REPO_PATH
+chmod g+w -R $REPO_PATH
+chown git:git -R $REPO_PATH
 cd master_repo
-git remote add $REPONAME "../repos/$REPONAME.git"
+git remote add $REPONAME $REPO_PATH
