@@ -1,0 +1,12 @@
+#!/usr/bin/ruby -w
+require_relative 'lib/test_harness'
+
+STDOUT.sync = true
+
+harness = TestHarness.new %w[
+  fibonacci
+  fizzbuzz
+  web2_names
+]
+harness.run
+exit harness.passed? ? 0 : -1
