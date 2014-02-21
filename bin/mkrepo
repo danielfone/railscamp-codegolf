@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+if [[ $# -lt 1 ]]; then
+  echo "USAGE: $0 REPONAME"
+  exit -1
+fi
+
+REPONAME=$1
+mkdir -p repos
+git clone --bare master_repo "repos/$REPONAME.git"
+cd master_repo
+git remote add $REPONAME "../repos/$REPONAME.git"
