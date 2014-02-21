@@ -94,3 +94,7 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+td.total {
+  background-color: #dff0d8 !important;
+}
