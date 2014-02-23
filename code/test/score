@@ -7,6 +7,7 @@ harness = TestHarness.new %w[
   fibonacci
   fizzbuzz
   web2_names
+  99_bottles
 ]
 harness.run
 exit harness.passed? ? 0 : -1
