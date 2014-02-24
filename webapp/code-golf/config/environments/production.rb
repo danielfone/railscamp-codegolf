@@ -77,4 +77,6 @@ CodeGolf::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
 end
