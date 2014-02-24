@@ -3,20 +3,10 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th></th>
-        <%- @board.columns.each do |col| -%>
-          <th>
-            <%= col %>
-          </th>
-        <%- end -%>
+        <%= leaderboard_header %>
       </tr>
       <tr>
-        <th>Reference</th>
-        <%- @board.references.each do |reference| -%>
-          <td>
-            <%= reference %>
-          </td>
-        <%- end -%>
+        <th><small>Length</small></th>
       </tr>
       <tr>
         <th>Par</th>
