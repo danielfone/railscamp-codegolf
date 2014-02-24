@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224080816) do
+ActiveRecord::Schema.define(version: 20140224101230) do
+
+  create_table "holes", force: true do |t|
+    t.integer  "length"
+    t.integer  "par"
+    t.string   "filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name"
     t.text     "scores"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "total"
   end
 
 end

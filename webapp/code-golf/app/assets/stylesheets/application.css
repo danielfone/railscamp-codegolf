@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+.numeric {
+  text-align: right;
+}
+
+th.hole {
+  width: 4%;
+}

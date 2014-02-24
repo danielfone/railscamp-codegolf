@@ -1,12 +1,8 @@
 <tr>
   <td><%= team.name %></td>
-  <%- 1.upto(9) do |i| -%>
-    <td><%= render_score team.score_for i %></td>
-  <%- end -%>
-  <td><%= render_score team.front_nine %></td>
-  <%- 10.upto(18) do |i| -%>
-    <td><%= render_score team.score_for i %></td>
-  <%- end -%>
-  <td><%= render_score team.back_nine %></td>
-  <td><%= render_score team.total %></td>
+  <%= render_numeric_cells team.scores[0..8] -%>
+  <%= render_numeric_cell  team.front_nine, class: 'active' %>
+  <%= render_numeric_cells team.scores[9..17] -%>
+  <%= render_numeric_cell  team.back_nine, class: 'active' %>
+  <%= render_numeric_cell  team.total, class: 'active' %>
 </tr>
