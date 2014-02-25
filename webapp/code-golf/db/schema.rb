@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140225003607) do
   create_table "holes", force: true do |t|
     t.integer  "length"
     t.integer  "best"
-    t.string   "filename"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "par"

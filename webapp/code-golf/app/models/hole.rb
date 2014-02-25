@@ -6,10 +6,10 @@ class Hole < ActiveRecord::Base
     read_attribute :par or (length - ball_speed * PAR_FACTOR).to_i
   end
 
-  # how easy the hole is, if it's long with a very low best,
-  # it's probably an easy hole
+  # how easy the hole is
+  # if it's long with a very low best, it's probably an easy hole
   def ball_speed
-    length - best
+    length - best rescue 0
   end
 
 end
