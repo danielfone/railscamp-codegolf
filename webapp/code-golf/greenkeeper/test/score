@@ -1,0 +1,13 @@
+#!/usr/bin/ruby -w
+require_relative 'lib/test_harness'
+require_relative 'lib/test_case'
+
+STDOUT.sync = true
+
+holes = ARGV.any? ? ARGV : Dir["holes/*.rb"]
+
+tests = holes.map { |h| TestCase.new h }
+
+harness = TestHarness.new tests
+harness.run
+exit harness.passed? ? 0 : -1

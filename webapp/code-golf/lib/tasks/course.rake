@@ -1,17 +1,33 @@
+COURSE_PATH = File.join Rails.root, 'greenkeeper'
+
 namespace :course do
-  task :check_holes do
+
+  task :generate_test_cases do
     
   end
 
-  task :load_holes => :environment do
+  task :check do
+    require_relative "#{COURSE_PATH}/test/lib/test_harness"
+    STDOUT.sync = true
+
+    holes = Dir["#{COURSE_PATH}/{holes,best,pars}/*"]
+
+    harness = TestHarness.new holes
+    harness.run
+    exit harness.passed? ? 0 : -1    
+  end
+
+  task :load => :environment do
+    puts "Clearing course..."
     Hole.destroy_all
-    Dir["./greenkeeper/holes/*"].each do |hole_path|
+    puts "Loading holes in #{COURSE_PATH}..."
+    Dir["#{COURSE_PATH}/holes/*"].each do |hole_path|
       filename = File.basename hole_path
 
-      best_path = "./greenkeeper/best/#{filename}"
-      par_path = "./greenkeeper/pars/#{filename}"
+      best_path = "#{COURSE_PATH}/best/#{filename}"
+      par_path  = "#{COURSE_PATH}/pars/#{filename}"
 
-      puts filename
+      puts "\t"+filename
       match, number, hole_name = filename.match(/(\d+)_(\w+).rb/).to_a
 
       length = File.size? hole_path
@@ -20,7 +36,9 @@ namespace :course do
 
       Hole.create! id: number, name: hole_name, length: length, best: best, par: par
     end
+    puts "Done"
   end
+
 end
 #rm -fr master_repo/
 #cp -r code/ master_repo/
