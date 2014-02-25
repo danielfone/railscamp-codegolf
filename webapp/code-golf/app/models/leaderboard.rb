@@ -5,11 +5,15 @@ class Leaderboard
   end
 
   def hole_lengths
-    18.times.each.map { rand 2000 }
+    holes.map { |h| h.length }
   end
 
   def pars
-    18.times.each.map { rand 100 }
+    holes.map { |h| h.par }
+  end
+
+  def holes
+    1.upto(18).map { |id| Hole.find_by_id id or NullHole.new }
   end
 
 end

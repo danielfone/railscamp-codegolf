@@ -1,4 +1,4 @@
-<h1 class="page-header">Leaderboard</h1>
+<h1 class="page-header">Score Card</h1>
 <div class="table-responsive">
   <table class="table table-striped leaderboard table-bordered table-condensed">
     <thead>
@@ -6,24 +6,31 @@
         <%= leaderboard_header %>
       </tr>
       <tr class="warning small">
-        <th>Length</th>
+        <th>Length*</th>
         <%= render_numeric_cells @board.hole_lengths[0..8] %>
-        <td></td>
+        <%= render_numeric_cell  @board.hole_lengths[0..8].coercive_sum %>
         <%= render_numeric_cells @board.hole_lengths[9..17] %>
-        <td></td>
-        <td></td>
+        <%= render_numeric_cell  @board.hole_lengths[9..17].coercive_sum %>
+        <%= render_numeric_cell  @board.hole_lengths.coercive_sum %>
       </tr>
       <tr class="small info">
-        <th>Par</th>
+        <th>Par**</th>
         <%= render_numeric_cells @board.pars[0..8] %>
-        <%= render_numeric_cell  @board.pars[0..8].sum %>
+        <%= render_numeric_cell  @board.pars[0..8].coercive_sum %>
         <%= render_numeric_cells @board.pars[9..17] %>
-        <%= render_numeric_cell  @board.pars[9..17].sum %>
-        <%= render_numeric_cell  @board.pars.sum %>
+        <%= render_numeric_cell  @board.pars[9..17].coercive_sum %>
+        <%= render_numeric_cell  @board.pars.coercive_sum %>
       </tr>
     </thead>
     <tbody>
       <%= render @board.teams -%>
     </tbody>
   </table>
+  <p>
+    <small>* This is the original length of each script. We call it length because... golf.</small>
+  </p>
+  <p>
+    <small>** These pars are fairly ambitious.</small>
+  </p>
+
 </div>

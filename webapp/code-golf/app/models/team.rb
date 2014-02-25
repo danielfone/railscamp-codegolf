@@ -10,22 +10,18 @@ class Team < ActiveRecord::Base
   end
 
   def front_nine
-    sum_scores scores[0..8]
+    scores[0..8].coercive_sum
   end
 
   def back_nine
-    sum_scores scores[9..17]
+    scores[9..17].coercive_sum
   end
 
   def total
-    sum_scores scores
+    scores.coercive_sum
   end
 
 private
-
-  def sum_scores(array)
-    array.map(&:to_i).sum unless array.compact.empty?
-  end
 
   def setup_defauls
     self.scores ||= Array.new(18, nil)
