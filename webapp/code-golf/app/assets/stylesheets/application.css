@@ -19,3 +19,8 @@
 th.hole {
   width: 4%;
 }
+
+th.calculated,
+td.calculated {
+  background: #e7e7e7 !important;
+}

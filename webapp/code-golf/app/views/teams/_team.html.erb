@@ -1,8 +1,8 @@
 <tr>
   <td><%= team.name %></td>
   <%= render_numeric_cells team.scores[0..8] -%>
-  <%= render_numeric_cell  team.front_nine, class: 'active' %>
+  <%= render_numeric_cell  team.front_nine, class: 'calculated' %>
   <%= render_numeric_cells team.scores[9..17] -%>
-  <%= render_numeric_cell  team.back_nine, class: 'active' %>
-  <%= render_numeric_cell  team.total, class: 'active' %>
+  <%= render_numeric_cell  team.back_nine, class: 'calculated' %>
+  <%= render_numeric_cell  team.total, class: 'calculated' %>
 </tr>
