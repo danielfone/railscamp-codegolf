@@ -1,6 +1,14 @@
 <h1 class="page-header">Score Card</h1>
+<p>
+  Ways to compete:
+  <ul>
+    <li>Lowest total score</li>
+    <li>Lowest score for a particular hole</li>
+    <li>Quickest time to par</li>
+  </ul>
+</p>
 <div class="table-responsive">
-  <table class="table table-striped leaderboard table-bordered table-condensed">
+  <table class="table table-striped leaderboard table-bordered table-condensed small">
     <thead>
       <tr>
         <th></th>
@@ -10,32 +18,33 @@
         <%= render_numeric_cell 'IN',    tag: :th, class: 'hole calculated' %>
         <%= render_numeric_cell 'TOTAL', tag: :th, class: 'calculated' %>
       </tr>
-      <tr class="warning small">
-        <th>Length*</th>
+      <tr class="warning">
+        <th>Length</th>
         <%= render_numeric_cells @board.hole_lengths[0..8] %>
         <%= render_numeric_cell  @board.hole_lengths[0..8].coercive_sum, class: 'calculated' %>
         <%= render_numeric_cells @board.hole_lengths[9..17] %>
         <%= render_numeric_cell  @board.hole_lengths[9..17].coercive_sum, class: 'calculated' %>
         <%= render_numeric_cell  @board.hole_lengths.coercive_sum, class: 'calculated' %>
       </tr>
-      <tr class="small info">
-        <th>Par**</th>
+      <tr class="info">
+        <th>Par</th>
         <%= render_numeric_cells @board.pars[0..8] %>
         <%= render_numeric_cell  @board.pars[0..8].coercive_sum, class: 'calculated' %>
         <%= render_numeric_cells @board.pars[9..17] %>
         <%= render_numeric_cell  @board.pars[9..17].coercive_sum, class: 'calculated' %>
         <%= render_numeric_cell  @board.pars.coercive_sum, class: 'calculated' %>
       </tr>
+      <tr class="success">
+        <th>Best</th>
+        <%= render_numeric_cells @board.bests[0..8] %>
+        <%= render_numeric_cell  @board.bests[0..8].coercive_sum, class: 'calculated' %>
+        <%= render_numeric_cells @board.bests[9..17] %>
+        <%= render_numeric_cell  @board.bests[9..17].coercive_sum, class: 'calculated' %>
+        <%= render_numeric_cell  @board.bests.coercive_sum, class: 'calculated' %>
+      </tr>
     </thead>
     <tbody>
       <%= render @board.teams -%>
     </tbody>
   </table>
-  <p>
-    <small>* This is the original length of each script. We call it length because... golf.</small>
-  </p>
-  <p>
-    <small>** These pars are fairly ambitious.</small>
-  </p>
-
 </div>

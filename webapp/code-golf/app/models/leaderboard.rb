@@ -5,11 +5,15 @@ class Leaderboard
   end
 
   def hole_lengths
-    holes.map { |h| h.length }
+    holes.map(&:length)
   end
 
   def pars
-    holes.map { |h| h.par }
+    holes.map(&:par)
+  end
+
+  def bests
+    holes.map(&:best)
   end
 
   def holes
