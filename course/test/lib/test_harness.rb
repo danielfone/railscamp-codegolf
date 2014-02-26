@@ -7,7 +7,11 @@ class TestHarness
   def run
     @tests.each do |test|
       printf "Running #{test.path}...\t"
-      puts test.passed? ? "passed [#{test.score} bytes]" : "failed! :("
+      if test.valid?
+        puts test.passed? ? "passed [#{test.score} bytes]" : "failed! :("
+      else
+        puts "skipping"
+      end
     end
     render_result
   end
@@ -24,7 +28,13 @@ private
       puts "Your score: #{total}"
     else
       puts "DISQUALIFIED"
-      @tests.each { |t| render_diff t unless t.passed? } 
+      @tests.each do |test|
+        if test.errors.any?
+          puts test.errors.map { |e| "\t#{e}" }
+        elsif not test.passed?
+          render_diff
+        end
+      end
     end
   end
 

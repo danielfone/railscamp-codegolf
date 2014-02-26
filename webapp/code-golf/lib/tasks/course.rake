@@ -6,17 +6,6 @@ namespace :course do
     
   end
 
-  task :check do
-    require_relative "#{COURSE_PATH}/test/lib/test_harness"
-    STDOUT.sync = true
-
-    holes = Dir["#{COURSE_PATH}/{holes,best,pars}/*"]
-
-    harness = TestHarness.new holes
-    harness.run
-    exit harness.passed? ? 0 : -1    
-  end
-
   task :load => :environment do
     puts "Clearing course..."
     Hole.destroy_all

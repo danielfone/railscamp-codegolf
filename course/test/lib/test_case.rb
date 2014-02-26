@@ -1,8 +1,9 @@
-class StaticTestCase
-  attr_reader :path
+class TestCase
+  attr_reader :path, :errors
 
   def initialize(path)
     @path = path
+    @errors = []
   end
 
   def score
@@ -10,7 +11,15 @@ class StaticTestCase
   end
 
   def passed?
-    @passed ||= diff.empty?
+    @passed ||= valid? && diff.empty?
+  end
+
+  def valid?
+    @errors.clear
+    @errors.push "#{reference_input} not found" unless File.exists?(reference_input)
+    @errors.push "#{reference_output} not found" unless File.exists?(reference_output)
+    @errors.push "#{path} not found" unless File.exists?(path)
+    @errors.empty?
   end
 
   def name
