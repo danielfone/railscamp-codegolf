@@ -7,7 +7,7 @@ class TestCase
   end
 
   def score
-    @score ||= File.size path
+    @score ||= File.size(path) if valid? and passed?
   end
 
   def passed?
@@ -34,9 +34,24 @@ class TestCase
     @reference_output ||= File.join 'test', 'cases', name, 'out.txt'
   end
 
+  def reference_input_lines
+    @reference_input_lines ||= File.readlines reference_input
+  end
+
+  def reference_output_lines
+    @reference_output_lines ||= File.readlines reference_output
+  end
+
   def diff
-    @diff ||= %x[
-      bash -c "diff <(cat #{reference_input} | ruby #{path}) #{reference_output}"
-    ]
+    @diff ||= output_lines.each_with_index.select { |l,i| l != reference_output_lines[i] }.map do |l,i| 
+      "Line #{i+1}: expected #{l.inspect} got #{reference_output_lines[i].inspect}"
+    end
+  end
+
+  def output_lines
+    IO.popen("ruby #{path}", 'r+') do |io|
+      io.puts reference_output_lines
+      return io.readlines
+    end
   end
 end

@@ -32,7 +32,7 @@ private
         if test.errors.any?
           puts test.errors.map { |e| "\t#{e}" }
         elsif not test.passed?
-          render_diff
+          render_diff test
         end
       end
     end

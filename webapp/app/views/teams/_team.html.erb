@@ -1,5 +1,5 @@
 <tr>
-  <td><%= team.name %></td>
+  <td><%= link_to team.name, team %></td>
   <%= render_numeric_cells team.scores[0..8] -%>
   <%= render_numeric_cell  team.front_nine, class: 'calculated' %>
   <%= render_numeric_cells team.scores[9..17] -%>
