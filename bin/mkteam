@@ -17,6 +17,9 @@ git clone --bare master_repo $REPO_PATH
 cp git_hooks/* $REPO_PATH/hooks
 chmod g+w -R $REPO_PATH
 chmod +x -R $REPO_PATH/hooks/*
-chown git:git -R $REPO_PATH
+#chown git -R $REPO_PATH
 cd master_repo
 git remote add $TEAMNAME $REPO_PATH
+
+cd ../webapp
+rake team:create name=$TEAMNAME

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+TARGET=master_repo
+
+rm -fr $TARGET
+mkdir -p $TARGET
+cp -r course/{holes,test,README.txt} $TARGET
+cd $TARGET
+git init
+git add -A
+git commit -m "chch-ruby code golf"
+
+cd ../webapp
+rake course:load

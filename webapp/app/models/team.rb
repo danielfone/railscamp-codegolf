@@ -3,6 +3,9 @@ class Team < ActiveRecord::Base
   serialize :scores, JSON
 
   after_initialize :setup_defauls
+
+  validates :name, presence: true
+
   before_save :store_total
 
   def score_for(hole)

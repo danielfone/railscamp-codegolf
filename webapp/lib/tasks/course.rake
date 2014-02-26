@@ -1,10 +1,6 @@
-COURSE_PATH = File.join Rails.root, 'greenkeeper'
+COURSE_PATH = File.join Rails.root, '..', 'course'
 
 namespace :course do
-
-  task :generate_test_cases do
-    
-  end
 
   task :load => :environment do
     puts "Clearing course..."
@@ -29,9 +25,3 @@ namespace :course do
   end
 
 end
-#rm -fr master_repo/
-#cp -r code/ master_repo/
-#cd master_repo
-#git init
-#git add -A
-#git commit -m "chch-ruby code golf"
