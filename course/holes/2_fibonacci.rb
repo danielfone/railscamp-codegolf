@@ -17,10 +17,11 @@ class Numeric
 end
 
 
-( 1 .. 1_000 ).each do |i|
+while line = gets do
+  i = line.to_i
   if i.is_a_fibonacci?
-    puts "#{i.to_s}"
+    puts "y"
   else
-    puts "."
+    puts "n"
   end
 end
