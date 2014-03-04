@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
 
   serialize :scores, JSON
 
-  after_initialize :setup_defauls
+  after_initialize :setup_defaults
 
   validates :name, presence: true
 
@@ -26,7 +26,7 @@ class Team < ActiveRecord::Base
 
 private
 
-  def setup_defauls
+  def setup_defaults
     self.scores ||= Array.new(18, nil)
   end
 
