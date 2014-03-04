@@ -27,8 +27,6 @@ class String
 
 end
 
-FILENAME = 'data/propernames'
-
 while name = gets do
   puts(name.strip.web2ify)
 end
