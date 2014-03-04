@@ -29,6 +29,6 @@ end
 
 FILENAME = 'data/propernames'
 
-File.readlines(FILENAME).each do |name|
+while name = gets do
   puts(name.strip.web2ify)
 end
