@@ -47,16 +47,6 @@ FizzBuzz
 47
 Fizz
 49
-Buzz
-Fizz
-52
-53
-Fizz
-Buzz
-56
-Fizz
-58
-59
 FizzBuzz
 61
 62

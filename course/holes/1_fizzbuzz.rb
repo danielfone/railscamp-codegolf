@@ -14,7 +14,8 @@ class Numeric
   end
 end
 
-( 1 .. 100 ).each do |i|
+while line = gets do
+  i = line.to_i
   if i.multiple_of_15?
     puts "FizzBuzz"
   elsif i.multiple_of_5?

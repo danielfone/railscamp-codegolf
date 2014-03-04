@@ -47,15 +47,16 @@ class TestCase
   end
 
   def diff
-    @diff ||= output_lines.each_with_index.select { |l,i| l != reference_output_lines[i] }.map do |l,i| 
-      "Line #{i+1}: expected #{l.inspect} got #{reference_output_lines[i].inspect}"
+    @diff ||= reference_output_lines.each_with_index.select { |l,i| l != output_lines[i] }.map do |l,i| 
+      "Line #{i+1}: expected #{l.inspect} got #{output_lines[i].inspect}"
     end
   end
 
   def output_lines
-    IO.popen("ruby #{path}", 'r+') do |io|
-      io.puts reference_output_lines
-      return io.readlines
+    @output_lines ||= IO.popen("ruby #{path}", 'r+') do |io|
+      io.puts reference_input_lines
+      io.close_write
+      io.readlines
     end
   end
 end
