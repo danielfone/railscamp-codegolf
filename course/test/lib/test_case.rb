@@ -6,6 +6,10 @@ class TestCase
     @errors = []
   end
 
+  def hole
+    name.split('_').first.to_i
+  end
+
   def score
     @score ||= File.size(path) if valid? and passed?
   end
