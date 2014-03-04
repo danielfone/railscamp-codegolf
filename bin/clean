@@ -1,12 +1,17 @@
 #!/bin/bash
 
+set -o nounset
+set -o errexit
+
+source .config
+
 read -p "Clean build code [y/N]? " choice
 
 [[ $choice == 'y' ]] || exit -1
 
-
-RM_TARGETS="master_repo /chchruby/*"
-echo "Removing $RM_TARGETS"
-rm -fr $RM_TARGETS
+echo "Removing $MASTER_REPO_DIR"
+rm -fr $MASTER_REPO_DIR
+echo "Removing $TEAM_REPO_BASE_DIR/*"
+sudo rm -fr $TEAM_REPO_BASE_DIR/*
 cd webapp
 rake db:setup

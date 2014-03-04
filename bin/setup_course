@@ -3,15 +3,15 @@
 set -o nounset
 set -o errexit
 
-TARGET=master_repo
+source .config
 
-rm -fr $TARGET
-mkdir -p $TARGET
-cp -r course/{holes,test,README.txt} $TARGET
-cd $TARGET
+rm -fr $MASTER_REPO_DIR
+mkdir -p $MASTER_REPO_DIR
+cp -r course/{holes,test,README.txt} $MASTER_REPO_DIR
+cd $MASTER_REPO_DIR
 git init
 git add -A
-git commit -m "chch-ruby code golf"
+git commit -m "railscamp code golf"
 
 cd ../webapp
 rake course:load
