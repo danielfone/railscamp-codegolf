@@ -24,10 +24,6 @@ class Team < ActiveRecord::Base
     scores.coercive_sum
   end
 
-  def clone_url
-    "ssh://vagrant@#{Rails.configuration.hostname}:2222/chchruby/#{name}/codegolf.git"
-  end
-
 private
 
   def setup_defauls

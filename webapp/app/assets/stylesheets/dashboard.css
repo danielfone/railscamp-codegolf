@@ -98,3 +98,8 @@ body {
 td.total {
   background-color: #dff0d8 !important;
 }
+
+code {
+  color: #555;
+  background-color: #eee;
+}

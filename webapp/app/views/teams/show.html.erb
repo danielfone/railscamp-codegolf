@@ -1,5 +1,32 @@
 <h1 class="page-header">
-  Team <%= @team.name %>
+  Team <%= @team.name.inspect %>
 </h1>
 
-<p>Clone URL: <%= @team.clone_url %></p>
+<h3>Password-based Repo</h3>
+<p>
+  <code>
+    <%= "git clone ssh://vagrant@#{Rails.configuration.hostname}:2222/chchruby/#{@team.name}/codegolf.git" %>
+  </code>
+</p>
+<p>
+  password <code>golfer</code>
+</p>
+
+<h3>Key-based Repo</h3>
+<p>
+  Save <%= link_to 'this private key', '/codegolf.id_rsa' %> into ~/.ssh/codegolf.id_rsa
+  and add the following into ~/.ssh/config
+  <pre>
+Host codegolf
+  Hostname <%= Rails.configuration.hostname %>
+  Port 2222
+  User golfer
+  IdentityFile ~/.ssh/codegolf.id_rsa
+</pre>
+</p>
+<p>
+  Then you can use
+  <code>
+    <%= "git clone ssh://codegolf/chchruby/#{@team.name}/codegolf.git" %>
+  </code>
+</p>
