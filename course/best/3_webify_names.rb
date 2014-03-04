@@ -1,0 +1,1 @@
+IO.foreach('p'){|n|puts n=~/^(\w*[aeiou]+\w+[^aeiou])[aeiou]+r$/xi?$~[1]+'r':n}

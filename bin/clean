@@ -4,5 +4,9 @@ read -p "Clean build code [y/N]? " choice
 
 [[ $choice == 'y' ]] || exit -1
 
-rm -vfr master_repo
-rm -vfr /chchruby
+
+RM_TARGETS="master_repo /chchruby/*"
+echo "Removing $RM_TARGETS"
+rm -fr $RM_TARGETS
+cd webapp
+rake db:setup

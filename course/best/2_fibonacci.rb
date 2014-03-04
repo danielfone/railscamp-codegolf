@@ -1,0 +1,1 @@
+1.upto(1000){|i|q=5*i**2;puts [q+4,q-4].any?{|n|Math.sqrt(n)%1==0}?i:'.'}

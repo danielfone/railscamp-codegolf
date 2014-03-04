@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+if [[ $# -lt 1 ]]; then
+  echo "USAGE: $0 TEAMNAME"
+  exit -1
+fi
+
+TEAMNAME=$1
+REPODIR=/chchruby/$TEAMNAME
+REPO_PATH=$REPODIR/codegolf.git
+
+mkdir -p $REPODIR
+git clone --bare master_repo $REPO_PATH
+cp git_hooks/* $REPO_PATH/hooks
+chmod +x -R $REPO_PATH/hooks/*
+cd master_repo
+git remote add $TEAMNAME $REPO_PATH
+
+cd ../webapp
+rake team:create name=$TEAMNAME
