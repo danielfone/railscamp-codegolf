@@ -7,14 +7,14 @@ namespace :team do
     name = ENV.fetch('name')
     path = ENV.fetch('path')
 
-    require File.join Rails.root, '..', 'course/test/lib/test_harness'
-    require File.join Rails.root, '..', 'course/test/lib/test_case'
+    Dir.chdir File.join(Rails.root,'..','course')
+
+    require './test/lib/test_harness'
+    require './test/lib/test_case'
 
     STDOUT.sync = true
 
-    Dir.chdir path
-
-    holes = Dir["holes/*.rb"]
+    holes = Dir[File.join path, "holes/*.rb"]
 
     tests = holes.map { |h| TestCase.new h }
 
@@ -24,8 +24,6 @@ namespace :team do
     team = Team.find_by! name: name
     tests.each { |t| team.scores[t.hole-1] = t.score }
     team.save!
-
-    exit harness.passed? ? 0 : -1
 
   end
 end

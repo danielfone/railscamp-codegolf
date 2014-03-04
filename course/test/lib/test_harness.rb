@@ -6,7 +6,7 @@ class TestHarness
 
   def run
     @tests.each do |test|
-      printf "Running #{test.path}...\t"
+      printf "Running #{test.name}...\t"
       if test.valid?
         puts test.passed? ? "passed [#{test.score} bytes]" : "failed! :("
       else
@@ -27,7 +27,8 @@ private
       puts "----"
       puts "Your score: #{total}"
     else
-      puts "DISQUALIFIED"
+      puts
+      puts "Errors"
       @tests.each do |test|
         if test.errors.any?
           puts test.errors.map { |e| "\t#{e}" }
