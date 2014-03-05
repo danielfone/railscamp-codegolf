@@ -1,0 +1,1 @@
+$<.each_slice(2).map{|a,b|p a.chars.sort==b.chars.sort}
