@@ -6,7 +6,7 @@ class TestHarness
 
   def run
     @tests.each do |test|
-      printf "Running #{test.name}...\t"
+      printf "Running %-20s" % test.name
       if test.valid?
         puts test.passed? ? "passed [#{test.score} bytes]" : "failed! :("
       else
