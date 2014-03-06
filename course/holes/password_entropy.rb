@@ -3,6 +3,14 @@
 # From the strong_password gem
 # https://github.com/bdmac/strong_password
 
+# NIST Special Publication 800-63 suggests the following scheme to roughly estimate the entropy of human-generated passwords:[2]
+# The entropy of the first character is four bits;
+# The entropy of the next seven characters are two bits per character;
+# The ninth through the twentieth character has 1.5 bits of entropy per character;
+# Characters 21 and above have one bit of entropy per character.
+# A "bonus" of six bits is added if both upper case letters and non-alphabetic characters are used.
+# A "bonus" of six bits is added for passwords of length 1 through 19 characters following an extensive dictionary check to ensure the password is not contained within a large dictionary. Passwords of 20 characters or more do not receive this bonus because it is assumed they are pass-phrases consisting of multiple dictionary words.
+
 module StrongPassword
   module NistBonusBits
     @@bonus_bits_for_password = {}
@@ -41,7 +49,7 @@ module StrongPassword
 
       if !space
         bonus_bits = bonus_bits - 2
-      elsif password.split(/\s+/).length > 3
+      elsif password.split(/ /).length > 3
         bonus_bits = bonus_bits + 1
       end
       bonus_bits
@@ -71,7 +79,7 @@ module StrongPassword
       else
         (length == 1 ? 4 : 0)
       end
-      bits + NistBonusBits.bonus_bits(password)
+      bits.to_f + NistBonusBits.bonus_bits(password)
     end
     
     # A modified version of the basic entropy calculation
