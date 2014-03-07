@@ -2,7 +2,8 @@
 
 ## Objective
 
-Do more with less! Work through the each holes to reduce the code to as few bytes as possible while still passing the tests.
+Do more with less! Work through the each hole to reduce the code to as few
+bytes as possible while still passing the tests.
 
 A few things:
 
@@ -27,7 +28,9 @@ A few things:
 
 ## Ruby
 
-The server is running ruby 2.1.0. The course should run fine on most other ruby versions (completely untested) but a few language features useful for golfing may be version specific.
+The server is running ruby 2.1.0. The course should run fine on most other ruby
+versions (completely untested) but a few language features useful for golfing
+may be version specific.
 
 You shouldn't need any gems.
 
@@ -64,7 +67,9 @@ You can also also pass in path(s) to run a specific hole.
     ----
     Your score: 26
 
-The scripts are (almost) all basically unix filters. The test will pipe in  test/cases/$hole/in.txt and verify that the output matches test/cases/$hole/out.txt
+The scripts are (almost) all basically unix filters. The test will pipe in 
+test/cases/$hole/in.txt and verify that the output matches
+test/cases/$hole/out.txt
 
 In some cases you might want to check the output yourself:
 
@@ -82,10 +87,15 @@ In some cases you might want to check the output yourself:
 
 ## Pushing
 
-When you push your repo, a post-receive hook will run a canonical test harness against a different set of test cases. It will then record your score. Although the test cases are different THEY WILL NOT INTRODUCE DIFFERENT EDGE CASES, at least, not intentionally. This is probably the fragile part, please be gentle.
+When you push your repo, a post-receive hook will run a canonical test harness
+against a different set of test cases. It will then record your score. Although
+the test cases are different THEY WILL NOT INTRODUCE DIFFERENT EDGE CASES, at
+least, not intentionally. This is probably the fragile part, please be gentle.
 
 ## Course Description
 
-The holes are provided without commentary. It's left as an exercise to the players to work out the purpose and requirements for each hole. Reading the code and test cases should help
+The holes are provided without commentary. It's left as an exercise to the
+players to work out the purpose and requirements for each hole. Reading the
+code and test cases should help.
 
 Good luck.
