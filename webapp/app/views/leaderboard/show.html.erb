@@ -12,9 +12,9 @@
     <thead>
       <tr>
         <th></th>
-        <%= render_numeric_cells 1..9,   tag: :th, class: 'hole' %>
+        <%= render_numeric_cells @board.hole_names[0..8],   tag: :th, class: 'hole' %>
         <%= render_numeric_cell 'OUT',   tag: :th, class: 'hole calculated' %>
-        <%= render_numeric_cells 10..18, tag: :th, class: 'hole' %>
+        <%= render_numeric_cells @board.hole_names[9..17], tag: :th, class: 'hole' %>
         <%= render_numeric_cell 'IN',    tag: :th, class: 'hole calculated' %>
         <%= render_numeric_cell 'TOTAL', tag: :th, class: 'calculated' %>
       </tr>

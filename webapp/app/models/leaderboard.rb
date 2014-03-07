@@ -1,5 +1,9 @@
 class Leaderboard
 
+  def hole_names
+    holes.map(&:id)
+  end
+
   def teams
     Team.order(:total)
   end
