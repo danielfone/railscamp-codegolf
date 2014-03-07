@@ -34,7 +34,6 @@ module StrongPassword
       other   = !!(password =~ /[^a-zA-Z0-9 ]/)
       space   = !!(password =~ / /)
     
-      # I had this condensed to nested ternaries but that shit was ugly
       bonus_bits = if upper && lower && other && numeric
         6
       elsif upper && lower && other && !numeric
