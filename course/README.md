@@ -9,7 +9,7 @@ A few things:
 
 * This is golf, not a security challenge.
     * The infrastructure was hacked together in a week
-    * It's trivally easy to break
+    * It's trivally easy to break, please don't.
     * Please replace your divots
 * Don't feel like you need to do each hole in order
 * There are multiple ways to be competitive:
