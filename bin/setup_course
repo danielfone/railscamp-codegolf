@@ -7,7 +7,7 @@ source .config
 
 rm -fr $MASTER_REPO_DIR
 mkdir -p $MASTER_REPO_DIR
-cp -r course/{holes,test,README.txt} $MASTER_REPO_DIR
+cp -r course/{holes,test,README.md} $MASTER_REPO_DIR
 cd $MASTER_REPO_DIR
 git init
 git add -A
