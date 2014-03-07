@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+source .config
+
+if [[ $# -lt 1 ]]; then
+  echo "USAGE: $0 HOLE NUMBER"
+  exit -1
+fi
+
+HOLE=$1
+NUMBER=$2
+
+mv course/holes/*_$HOLE.rb  course/holes/${NUMBER}_$HOLE.rb
+mv course/best/*_$HOLE.rb   course/best/${NUMBER}_$HOLE.rb
