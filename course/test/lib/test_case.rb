@@ -30,12 +30,16 @@ class TestCase
     @name ||= File.basename path, '.rb'
   end
 
+  def test_dir
+    @test_dir ||= name.split('_')[1..-1].join('_')
+  end
+
   def reference_input
-    @reference_input ||= File.join 'test', 'cases', name, 'in.txt'
+    @reference_input ||= File.join 'test', 'cases', test_dir, 'in.txt'
   end
 
   def reference_output
-    @reference_output ||= File.join 'test', 'cases', name, 'out.txt'
+    @reference_output ||= File.join 'test', 'cases', test_dir, 'out.txt'
   end
 
   def reference_input_lines
