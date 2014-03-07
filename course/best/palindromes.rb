@@ -1,0 +1,1 @@
+puts$<.map{|s|s=s.upcase.gsub /\W/,'';s==s.reverse}
