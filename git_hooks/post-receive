@@ -2,6 +2,8 @@
 
 set -o errexit
 
+export RAILS_ENV=production
+
 REPOPATH=`pwd`
 TMPDIR=`mktemp -d`
 TEAM=`echo $REPOPATH | cut -d'/' -f3`

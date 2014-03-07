@@ -20,7 +20,7 @@ CodeGolf::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -78,5 +78,5 @@ CodeGolf::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.secret_key_base = ENV['SECRET_KEY_BASE']
+  config.secret_key_base = 'e9e02967e0d771a822f5cd133ca1a35df557942b2556720b53bdf11cd06f7d012250a706925ccd1a'
 end
