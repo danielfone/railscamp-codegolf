@@ -14,7 +14,7 @@ namespace :team do
 
     STDOUT.sync = true
 
-    holes = Dir[File.join path, "holes/*.rb"]
+    holes = Dir[File.join path, "holes/*.rb"].sort
 
     tests = holes.map { |h| TestCase.new h }
 
