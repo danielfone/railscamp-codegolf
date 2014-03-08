@@ -5,7 +5,7 @@
 <h3>Password-based Repo</h3>
 <p>
   <code>
-    <%= "git clone ssh://golfer@#{Rails.configuration.hostname}:2222/codegolf/#{@team.name}/codegolf.git" %>
+    <%= "git clone ssh://golfer@#{Rails.configuration.hostname}/codegolf/#{@team.name}/codegolf.git" %>
   </code>
 </p>
 <p>
@@ -19,7 +19,6 @@
   <pre>
 Host codegolf
   Hostname <%= Rails.configuration.hostname %>
-  Port 2222
   User golfer
   IdentityFile ~/.ssh/codegolf.id_rsa
 </pre>
