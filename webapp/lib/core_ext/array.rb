@@ -1,7 +1,7 @@
 class Array
 
   def coercive_sum
-    map(&:to_i).sum unless compact.empty?
+    map(&:to_int).sum rescue nil
   end
 
 end
