@@ -1,12 +1,3 @@
-correct horse battery staple
-Tr0ub4dor&3
-password
-letmein
-friend
-SHER
-00000000
-Open Sesame
-Aa?
 
 1
 12
@@ -18,3 +9,12 @@ Aa?
 12345678
 123456789
 123456789012345678901234567890
+correct horse battery staple
+Tr0ub4dor&3
+password
+letmein
+friend
+SHER
+00000000
+Open Sesame
+Aa?

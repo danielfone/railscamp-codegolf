@@ -1,7 +1,3 @@
-boat
-boat
-toab
-boat
 oabt
 toab
 a
@@ -14,3 +10,7 @@ sleepy
 pyels
 p
 p
+boat
+boat
+toab
+boat
