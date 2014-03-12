@@ -33,6 +33,8 @@ This is pretty much an unedited dump of my infrastructure. It is **hugely** inse
 
         vagrant@precise32:/vagrant$ sudo cp -a ~/.rvm ~golfer/; sudo chown golfer:golfer ~golfer/.rvm -R
 
+    ... but there must be a smarter way to do this.
+
 ## Setup
 
 *(This is off the top of my head and I haven't tested these instructions)*
