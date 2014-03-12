@@ -41,15 +41,15 @@ This is pretty much an unedited dump of my infrastructure. It is **hugely** inse
 
 * Make sure you're in the application root (usually /vagrant)
 * Setup rails first
-        * cd webapp/
-        * rake db:setup
-        * rails server
-        * you should be able to browse to a blank score card now
+  * cd webapp/
+  * rake db:setup
+  * rails server
+  * you should be able to browse to a blank score card now
 * Setup filesystem
-        * cd /vagrant
-        * bin/clean (read this script before you run it, it involves rm's!)
-        * bin/setup_course (loads course details into database in makes a "gold master" repo for cloning)
-        * bin/mkteam (sets up a team in the database and creates a repo for this team)
+  * cd /vagrant
+  * bin/clean (read this script before you run it, it involves rm's!)
+  * bin/setup_course (loads course details into database in makes a "gold master" repo for cloning)
+  * bin/mkteam (sets up a team in the database and creates a repo for this team)
 
 ## Going Live
 
