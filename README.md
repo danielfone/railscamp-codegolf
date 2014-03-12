@@ -1,7 +1,7 @@
 railscamp-codegolf
 ==================
 
-This is pretty much a dump of my infrastructure. Here are some setup notes off the top of my head.
+This is pretty much an unedited dump of my infrastructure. It is **hugely** insecure and relies on trusting the players. Here are some setup notes off the top of my head.
 
 * It is designed to run in a vagrant container (i.e. this directory structure ends up in /vagrant)
 * There should be a user called 'golfer' who should be in the 'vagrant' group.
