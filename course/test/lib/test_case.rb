@@ -53,7 +53,7 @@ class TestCase
 
   def diff
     @diff ||= reference_output_lines.each_with_index.select { |l,i| l != output_lines[i] }.map do |l,i| 
-      "Line #{i+1}: expected #{l.chomp.inspect} got #{output_lines[i].chomp.inspect}"
+      "Line #{i+1}: expected #{l.inspect} got #{output_lines[i].inspect}"
     end
   end
 
