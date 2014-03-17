@@ -7,39 +7,23 @@
   <%= link_to '2.1.0 Stdlib', '/docs/ruby_2_1_0_stdlib/' %>
 </p>
 <div class="table-responsive">
-  <table class="table table-striped leaderboard table-bordered table-condensed small">
+  <table class="table table-striped leaderboard table-bordered table-condensed small" style="width:auto">
     <thead>
       <tr>
         <th></th>
-        <%= render_numeric_cells @board.hole_names[0..8],   tag: :th, class: 'hole' %>
-        <%= render_numeric_cell 'OUT',   tag: :th, class: 'hole calculated' %>
-        <%= render_numeric_cells @board.hole_names[9..17], tag: :th, class: 'hole' %>
-        <%= render_numeric_cell 'IN',    tag: :th, class: 'hole calculated' %>
-        <%= render_numeric_cell 'TOTAL', tag: :th, class: 'calculated' %>
+        <%= render_numeric_cell @board.hole_names[0],   tag: :th %>
       </tr>
       <tr class="warning">
         <th>Length</th>
-        <%= render_numeric_cells @board.hole_lengths[0..8] %>
-        <%= render_numeric_cell  @board.hole_lengths[0..8].coercive_sum, class: 'calculated' %>
-        <%= render_numeric_cells @board.hole_lengths[9..17] %>
-        <%= render_numeric_cell  @board.hole_lengths[9..17].coercive_sum, class: 'calculated' %>
-        <%= render_numeric_cell  @board.hole_lengths.coercive_sum, class: 'calculated' %>
+        <%= render_numeric_cell @board.hole_lengths[0] %>
       </tr>
       <tr class="info">
         <th>Par</th>
-        <%= render_numeric_cells @board.pars[0..8] %>
-        <%= render_numeric_cell  @board.pars[0..8].coercive_sum, class: 'calculated' %>
-        <%= render_numeric_cells @board.pars[9..17] %>
-        <%= render_numeric_cell  @board.pars[9..17].coercive_sum, class: 'calculated' %>
-        <%= render_numeric_cell  @board.pars.coercive_sum, class: 'calculated' %>
+        <%= render_numeric_cell @board.pars[0] %>
       </tr>
       <tr class="success">
         <th>Best</th>
-        <%= render_numeric_cells @board.bests[0..8] %>
-        <%= render_numeric_cell  @board.bests[0..8].coercive_sum, class: 'calculated' %>
-        <%= render_numeric_cells @board.bests[9..17] %>
-        <%= render_numeric_cell  @board.bests[9..17].coercive_sum, class: 'calculated' %>
-        <%= render_numeric_cell  @board.bests.coercive_sum, class: 'calculated' %>
+        <%= render_numeric_cell @board.bests[0] %>
       </tr>
     </thead>
     <tbody>

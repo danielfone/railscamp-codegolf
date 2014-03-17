@@ -21,7 +21,8 @@ class Leaderboard
   end
 
   def holes
-    1.upto(18).map { |id| Hole.find_by_id id or NullHole.new }
+    Hole.find [19]
+    #1.upto(18).map { |id| Hole.find_by_id id or NullHole.new }
   end
 
 end
