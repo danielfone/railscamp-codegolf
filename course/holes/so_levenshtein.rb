@@ -16,7 +16,6 @@ def levenshtein(s1, s2)
                    d[[i, j - 1]] + 1,
                    d[[i - 1, j - 1]] + cost
                   ].min
-      #next
       if (i > 1 and j > 1 and s1[i-1] == s2[j-2] and s1[i-2] == s2[j-1])
         d[[i, j]] = [d[[i,j]],
                      d[[i-2, j-2]] + cost
