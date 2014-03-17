@@ -15,6 +15,7 @@ class TestCase
   end
 
   def passed?
+    return @passed if defined? @passed
     @passed ||= valid? && diff.empty?
   end
 
@@ -35,19 +36,23 @@ class TestCase
   end
 
   def reference_input
-    @reference_input ||= File.join 'test', 'cases', test_dir, 'in.txt'
+    @reference_input ||= File.join 'test', 'cases', "#{name}_generator.rb"
   end
 
   def reference_output
-    @reference_output ||= File.join 'test', 'cases', test_dir, 'out.txt'
+    @reference_output ||= File.join 'holes', "#{name}.rb"
   end
 
   def reference_input_lines
-    @reference_input_lines ||= File.readlines reference_input
+    @reference_input_lines ||= %x[ruby #{reference_input}]
   end
 
   def reference_output_lines
-    @reference_output_lines ||= File.readlines reference_output
+    @reference_output_lines ||= IO.popen("ruby #{reference_output}", 'r+', ) do |io|
+      io.puts reference_input_lines
+      io.close_write
+      io.readlines
+    end
   end
 
   def diff
@@ -57,10 +62,17 @@ class TestCase
   end
 
   def output_lines
-    @output_lines ||= IO.popen("ruby #{path}", 'r+') do |io|
-      io.puts reference_input_lines
-      io.close_write
-      io.readlines
-    end
+    @output_lines ||= IO.popen "ruby #{path}", 'r+', &method(:io_process)
+  end
+
+  def io_process(io)
+    io.puts reference_input_lines
+    io.close_write
+    Timeout::timeout(TestHarness::TEST_TIMEOUT) { io.readlines }
+  rescue
+    Process.kill 'TERM', io.pid
+    @passed = false
+    @errors << "#{path} timed out"
+    raise
   end
 end

@@ -1,19 +1,27 @@
+require 'timeout'
+
 class TestHarness
+
+  TEST_TIMEOUT = 5
 
   def initialize(tests)
     @tests = tests
   end
 
   def run
-    @tests.each do |test|
-      printf "Running %-22s" % test.name
-      if test.valid?
-        puts test.passed? ? "passed [#{test.score} bytes]" : "failed! :("
-      else
-        puts "skipping"
-      end
+    @tests.each { |t| run_test t }
+    render_result    
+  end
+
+  def run_test(test)
+    printf "Running %-22s" % test.name
+    if test.valid?
+      puts test.passed? ? "passed [#{test.score} bytes]" : "failed! :("
+    else
+      puts "skipping"
     end
-    render_result
+  rescue Timeout::Error
+    puts "timed out (> #{TEST_TIMEOUT} sec)"
   end
 
   def passed?
