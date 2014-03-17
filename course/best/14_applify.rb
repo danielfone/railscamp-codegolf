@@ -1,1 +1,0 @@
-puts$<.map{|i|?i+i.capitalize}
