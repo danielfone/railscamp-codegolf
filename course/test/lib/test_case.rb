@@ -36,28 +36,24 @@ class TestCase
   end
 
   def reference_input
-    @reference_input ||= File.join 'test', 'cases', "#{name}_generator.rb"
+    @reference_input ||= File.join 'test', 'cases', test_dir, 'in.txt'
   end
 
   def reference_output
-    @reference_output ||= File.join 'holes', "#{name}.rb"
+    @reference_output ||= File.join 'test', 'cases', test_dir, 'out.txt'
   end
 
   def reference_input_lines
-    @reference_input_lines ||= %x[ruby #{reference_input}]
+    @reference_input_lines ||= File.readlines reference_input
   end
 
   def reference_output_lines
-    @reference_output_lines ||= IO.popen("ruby #{reference_output}", 'r+', ) do |io|
-      io.puts reference_input_lines
-      io.close_write
-      io.readlines
-    end
+    @reference_output_lines ||= File.readlines reference_output
   end
 
   def diff
     @diff ||= reference_output_lines.each_with_index.select { |l,i| l != output_lines[i] }.map do |l,i| 
-      "Line #{i+1}: expected #{l.inspect} got #{output_lines[i].inspect}"
+      "Line #{i+1}: expected #{l.chomp.inspect} got #{output_lines[i].chomp.inspect}"
     end
   end
 
