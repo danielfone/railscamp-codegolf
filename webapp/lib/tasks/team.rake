@@ -22,7 +22,7 @@ namespace :team do
     harness.run
     
     team = Team.find_by! name: name
-    tests.each { |t| team.scores[t.hole-1] = t.score }
+    tests.each { |t| team.scores[0] = t.score }
     team.save!
 
   end
