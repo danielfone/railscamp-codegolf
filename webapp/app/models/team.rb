@@ -21,7 +21,7 @@ class Team < ActiveRecord::Base
   end
 
   def total
-    scores.coercive_sum
+    scores[0]
   end
 
 private
@@ -31,7 +31,7 @@ private
   end
 
   def store_total
-    write_attribute :total, total
+    write_attribute :total, scores[0]
   end
 
 end
